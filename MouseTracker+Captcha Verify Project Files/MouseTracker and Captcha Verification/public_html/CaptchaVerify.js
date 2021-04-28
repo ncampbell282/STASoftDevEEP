@@ -1,7 +1,9 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Nolan Campbell
+ * This script will verify that mouse movement is detected, and allow the user to attempt to login to Tyler SIS
  */
 
 
+function verify() {
+    document.getElementById("demo").innerHTML = "Verified";
+}
