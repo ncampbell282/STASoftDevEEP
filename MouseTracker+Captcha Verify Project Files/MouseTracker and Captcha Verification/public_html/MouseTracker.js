@@ -4,16 +4,10 @@
  * and open the template in the editor.
  */
 
-=
-            <!-- Tracks mouse movement, event found in console when inspecting -->
-            public static boolean checkMouse(var mouseX, var mouseY)
-            {
-                if (mouseX != 0 || mouseY != 0)
-                {
-                    return true;
-                }
-                else 
-                {
-                    return false;
-                }
-            } 
+function mouseDetect(counter)
+{
+    if (counter !== 0 || counter !== null || counter !== undefined)
+        return true;
+    else 
+        return false;
+};

@@ -11,26 +11,50 @@ and open the template in the editor.
     </head>
     
     <body>
-        <script src="MouseTracker.js">
-           
-            var mouseX = 0, mouseY = 0;
+        <script>
             
-            window.addEventListener('mousemove', function (e)
+            var xval;  // X Value
+            var yval;  // X Value
+            var mouseCounter = 0;
+            
+            window.addEventListener('mousemove', function (e) // Listener to fire when mouse movement detected
             {
+                
                 document.getElementById('x-value').textContent = e.x;
                 document.getElementById('y-value').textContent = e.y;
-                mouseX = e.x;
-                mouseY = e.y;
+                mouseCounter += 1; // Counts every time a mouse event fires
+                document.getElementById('counter').textContent = mouseCounter;
+                xval = e.x; // Sets the mouse X value
+                yval = e.y; // Sets the mouse Y value
             });
-
-            checkMouse(mouseX, mouseY);
+        </script>
+        
+        <script type="text/javascript" src="MouseTracker.js"></script>
+        <script language="javascript" >
+            
+            window.setInterval( // Every 1 second
+            function checkTheMouse() 
+            {
+                // Functions from Javascript file MouseTracker.js
+                console.clear(); // Clears console at the start of each run
+            
+                if (mouseDetect(mouseCounter)) // If (refer to MouseTracker.js file for function details)
+                    console.log('mouse has moved'); // Add any action here for mouse movement
+                else 
+                    console.log('mouse hasn\'t moved'); // Add any action here for no mouse movement
+                
+            }
+            , 1000);
         </script>
         
         <p>
             X: <span id="x-value"></span>
         </p>
-            <p>
+        <p>
             Y: <span id="y-value"></span>
+        </p>
+        <p>
+            Counter: <span id="counter"></span>
         </p>
     </body>
 </html>
