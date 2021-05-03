@@ -42,6 +42,6 @@ function attemptLogin() {
         }
     };
 
-    xmlhttp.open("POST", "verifyLogin.php?q=", true);
+    xmlhttp.open("POST", "verifylogin.php", true);
     xmlhttp.send(sendData);
 }

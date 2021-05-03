@@ -13,3 +13,4 @@ $stmt->store_result();
 $stmt->bind_result($username, $password);
 $stmt->fetch();
 $stmt->close();
+?>
