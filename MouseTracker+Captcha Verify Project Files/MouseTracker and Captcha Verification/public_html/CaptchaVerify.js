@@ -11,12 +11,12 @@ function verify() {
 
 //Get entered username
 function getUsername() {
-    return document.getElementById("username").value;
+    return document.getElementById("username").innerHTML;
 }
 
 //get entered password
 function getPassword() {
-    return document.getElementById("password").value;
+    return document.getElementById("password").innerHTML;
 }
 
 //Attempt to login
@@ -26,22 +26,21 @@ function attemptLogin() {
     var username = getUsername();
     var password = getPassword();
 
-    //Set the data to send in request to PHP file
-    var sendData = JSON.stringify({
-        name: username,
-        pass: password
-    });
-
     //Send password to PHP file using AJAX/xmlhttp to interface with database, and return if login successful
     //If PHP file returns false match, increment attempt count by one, when attempt count equals 5, start running verify method
     var xmlhttp = new XMLHttpRequest();
 
+    //Get the response from the verifylogin.php
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("demo").innerHTML = this.responseText;
+            //document.getElementById("demo").innerHTML = "response received"
         }
     };
 
-    xmlhttp.open("POST", "verifylogin.php", true);
-    xmlhttp.send(sendData);
+    //xmlhttp.open("POST", "verifylogin.php?name=" + username + "&pass=" + password, true);
+    xmlhttp.open("POST", "http://localhost:3000/MouseTracker%20and%20Captcha%20Verification/public_html/verifylogin.php", true);
+
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("name=" + username + "&pass=" + password);
 }
