@@ -11,19 +11,7 @@ and open the template in the editor.
     </head>
     
     <body>
-        <script>
-            <!-- Tracks mouse movement, event found in console when inspecting -->
-            window.addEventListener('mousemove', function (e)
-            {
-                document.getElementById('x-value').textContent = e.x;
-                document.getElementById('y-value').textContent = e.y;
-            });
+        <script src="MouseTracker.js">
         </script>
-        <p>
-            X: <span id="x-value"></span>
-        </p>
-            <p>
-            Y: <span id="y-value"></span>
-        </p>
     </body>
 </html>
