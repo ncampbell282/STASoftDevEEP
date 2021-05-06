@@ -21,7 +21,24 @@ function getPassword() {
 
 //Attempt to login
 function attemptLogin() {
+    //Counter for login attempts
+    var loginAttempts = 0;
 
+    if (loginAttempts < 5) {
+        sendValidation();
+    }
+
+    if (loginAttemps > 5) {
+        if (verify()) {
+            sendValidation();
+        } else {
+            lockout();
+        }
+    }
+
+}
+
+function sendValidation() {
     //Get username and password
     var username = getUsername();
     var password = getPassword();
