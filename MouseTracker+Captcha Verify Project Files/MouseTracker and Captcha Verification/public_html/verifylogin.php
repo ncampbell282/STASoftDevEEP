@@ -1,5 +1,5 @@
 <?php
-//Allows met to make the http request on the same origin.
+//Allows met to make the http request on the same origin. Reduce strictness on what traffic can go to this site.
 header('Access-Control-Allow-Origin: *');
 
 //Set parameters

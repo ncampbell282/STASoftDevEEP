@@ -3,6 +3,9 @@
  * This script will verify that mouse movement is detected, and allow the user to attempt to login to Tyler SIS
  */
 
+//Constants
+const loginForm = document.getElementById("login-form");
+
 //Global variables
 //Counter for login attempts
 var loginAttempts = 0;
@@ -14,38 +17,34 @@ function isVerified() {
 
 //Get entered username
 function getUsername() {
-    //return username = loginForm.username.value;
-    return document.getElementById("txtUserName").innerHTML;
+    return username = loginForm.username.value;
+    //return document.getElementById("txtUserName").innerHTML;
 }
 
 //get entered password
 function getPassword() {
-    //return password = loginForm.password.value;
-    return document.getElementById("txtPassword").innerHTML;
+    return password = loginForm.password.value;
+    //return document.getElementById("txtPassword").innerHTML;
 
 }
 
 //Attempt to login
 function attemptLogin() {
-    //document.getElementById("is-login").innerHTML = "sucess";
-    //document.getElementById("is-login").innerHTML = getPassword();
-    //print(getPassword());
-    //print(getUsername());
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
-    document.getElementById("is-login").innerHTML = username + " " + password;
-    /* if (loginAttempts < 5) {
-         sendValidation();
-     } else if (loginAttemps >= 5) {
-         if (isVerified()) {
-             sendValidation();
-         } else {
-             lockout();
-         }
-     }*/
+    if (loginAttempts < 5) {
+        //sendValidation();
+        document.getElementById("is-login").innerHTML = "attempt login";
+    } else if (loginAttempts >= 5) {
+        if (isVerified() == true) {
+            //sendValidation();
+            document.getElementById("is-login").innerHTML = "Verified";
+        } else {
+            // lockout();
+            document.getElementById("is-login").innerHTML = "Locked";
+        }
+    }
 
-    //loginAttempts++;
-    //document.getElementById("demo").innerHTML = loginAttempts;
+    loginAttempts++;
+
     return false;
 }
 
@@ -67,7 +66,7 @@ function sendValidation() {
     };
 
     //xmlhttp.open("POST", "verifylogin.php?name=" + username + "&pass=" + password, true);
-    xmlhttp.open("POST", "http://localhost:3000/MouseTracker%20and%20Captcha%20Verification/public_html/verifylogin.php", true);
+    xmlhttp.open("POST", "http://localhost:3000/MouseTracker+Captcha%20Verify%20Project%20Files/MouseTracker%20and%20Captcha%20Verification/public_html/verifylogin.php", true);
 
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("name=" + username + "&pass=" + password);
