@@ -23,13 +23,11 @@ window.addEventListener('mousemove', function (e) // Listener to fire when mouse
         yval = e.y; // Sets the mouse Y value
     });
     
-window.setInterval( // Every 1 second
-        function checkTheMouse() 
+window.setInterval( 
+        function checkTheMouse()
             {
                 // Functions from Javascript file MouseTracker.js
-               console.clear();
-               
-               
+                console.clear();
                 // mousePrev logs the previous mouse position and compares 
                 // against the current position to track whether or not the 
                 // mouse is still moving or not.
@@ -44,9 +42,9 @@ window.setInterval( // Every 1 second
             }
             , 500); // Every 500 miliseconds
 
-function mouseDetect(counter) // Use this function to check if the mouse is moved, returns boolean 
+function mouseDetect() // Use this function to check if the mouse is moved, returns boolean 
 {
-    if (counter !== 0 && counter !== null && counter !== undefined) // If the mouse has moved from it's point at page start
+    if (mouseCounter !== 0 && mouseCounter !== null && mouseCounter !== undefined) // If the mouse has moved from it's point at page start
     {
         return true;
     }
