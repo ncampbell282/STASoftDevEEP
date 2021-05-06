@@ -31,15 +31,12 @@ function getPassword() {
 //Attempt to login
 function attemptLogin() {
     if (loginAttempts < 5) {
-        //sendValidation();
-        document.getElementById("is-login").innerHTML = "attempt login";
+        sendValidation();
     } else if (loginAttempts >= 5) {
         if (isVerified() == true) {
-            //sendValidation();
-            document.getElementById("is-login").innerHTML = "Verified";
+            sendValidation();
         } else {
-            // lockout();
-            document.getElementById("is-login").innerHTML = "Locked";
+            lockout();
         }
     }
 
@@ -74,5 +71,13 @@ function sendValidation() {
 
 //Function to lock user out
 function lockout() {
-    document.getElementById("is-login").innerHTML = "Locked out";
+    document.getElementById("is-login").innerHTML = "Locked out for one minute";
+    document.getElementById("login-form-submit").hidden = true;
+    setTimeout(unHideButton(), 60000);
+}
+
+//Function to allow user to submit login attempt once time is up
+function unHideButton() {
+    document.getElementById("login-form-submit").hidden = false;
+    document.getElementById("is-login").innerHTML = "You can now login";
 }
