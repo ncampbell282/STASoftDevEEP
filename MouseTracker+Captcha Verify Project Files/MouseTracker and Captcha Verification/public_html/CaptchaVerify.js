@@ -2,11 +2,14 @@
  * Nolan Campbell
  * This script will verify that mouse movement is detected, and allow the user to attempt to login to Tyler SIS
  */
-attemptCount = 0;
+
+//Global variables
+//Counter for login attempts
+var loginAttempts = 0;
 
 //Get if mouse movement is detected or not
-function verify() {
-    document.getElementById("demo").innerHTML = "Verified";
+function isVerified() {
+    return false;
 }
 
 //Get entered username
@@ -21,20 +24,18 @@ function getPassword() {
 
 //Attempt to login
 function attemptLogin() {
-    //Counter for login attempts
-    var loginAttempts = 0;
-
     if (loginAttempts < 5) {
-        sendValidation();
-    }
-
-    if (loginAttemps > 5) {
-        if (verify()) {
-            sendValidation();
+        // sendValidation();
+    } else if (loginAttemps >= 5) {
+        if (isVerified()) {
+            // sendValidation();
         } else {
             lockout();
         }
     }
+
+    loginAttempts++;
+    //document.getElementById("demo").innerHTML = loginAttempts;
 
 }
 
@@ -60,4 +61,9 @@ function sendValidation() {
 
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("name=" + username + "&pass=" + password);
+}
+
+//Function to lock user out
+function lockout() {
+    document.getElementById("demo").innerHTML = "Locked out";
 }
