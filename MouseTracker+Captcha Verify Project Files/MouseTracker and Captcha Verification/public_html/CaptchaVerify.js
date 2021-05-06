@@ -14,29 +14,39 @@ function isVerified() {
 
 //Get entered username
 function getUsername() {
-    return document.getElementById("username").innerHTML;
+    //return username = loginForm.username.value;
+    return document.getElementById("txtUserName").innerHTML;
 }
 
 //get entered password
 function getPassword() {
-    return document.getElementById("password").innerHTML;
+    //return password = loginForm.password.value;
+    return document.getElementById("txtPassword").innerHTML;
+
 }
 
 //Attempt to login
 function attemptLogin() {
-    if (loginAttempts < 5) {
-        // sendValidation();
-    } else if (loginAttemps >= 5) {
-        if (isVerified()) {
-            // sendValidation();
-        } else {
-            lockout();
-        }
-    }
+    //document.getElementById("is-login").innerHTML = "sucess";
+    //document.getElementById("is-login").innerHTML = getPassword();
+    //print(getPassword());
+    //print(getUsername());
+    const username = loginForm.username.value;
+    const password = loginForm.password.value;
+    document.getElementById("is-login").innerHTML = username + " " + password;
+    /* if (loginAttempts < 5) {
+         sendValidation();
+     } else if (loginAttemps >= 5) {
+         if (isVerified()) {
+             sendValidation();
+         } else {
+             lockout();
+         }
+     }*/
 
-    loginAttempts++;
+    //loginAttempts++;
     //document.getElementById("demo").innerHTML = loginAttempts;
-
+    return false;
 }
 
 function sendValidation() {
@@ -51,7 +61,7 @@ function sendValidation() {
     //Get the response from the verifylogin.php
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML = this.responseText;
+            document.getElementById("is-login").innerHTML = this.responseText;
             //document.getElementById("demo").innerHTML = "response received"
         }
     };
@@ -65,5 +75,5 @@ function sendValidation() {
 
 //Function to lock user out
 function lockout() {
-    document.getElementById("demo").innerHTML = "Locked out";
+    document.getElementById("is-login").innerHTML = "Locked out";
 }
