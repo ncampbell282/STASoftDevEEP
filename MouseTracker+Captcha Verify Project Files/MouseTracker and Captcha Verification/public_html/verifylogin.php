@@ -30,9 +30,11 @@ $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row in results
   while($row = $result->fetch_assoc()) {
-    echo "username: " . $row["username"]. " - Password: " . $row["password"]. " " . "<br>";
+    echo true;
+    //Print query result
+    //echo "username: " . $row["username"]. " - Password: " . $row["password"]. " " . "<br>";
   }
 } else {
-  echo "Invalid login";
+  echo false;
 }
 ?>
