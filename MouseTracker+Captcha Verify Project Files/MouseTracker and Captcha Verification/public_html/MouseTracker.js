@@ -26,7 +26,6 @@ window.addEventListener('mousemove', function(e) // Listener to fire when mouse 
 window.setInterval(
     function checkTheMouse() {
         // Functions from Javascript file MouseTracker.js
-        console.clear();
         // mousePrev logs the previous mouse position and compares 
         // against the current position to track whether or not the 
         // mouse is still moving or not.
@@ -37,6 +36,8 @@ window.setInterval(
             console.log('mouse isn\'t moving    X: ' + xval + '  Y: ' + yval + '  Mouse Events: ' + mouseCounter); // Add any action here for no mouse movement
 
     }, 500); // Every 500 miliseconds
+
+
 
 function mouseDetect() // Use this function to check if the mouse is moved, returns boolean 
 {
