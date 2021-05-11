@@ -1,5 +1,5 @@
 #Nolan Campbell 05072021
-#Modified SIS Cracker created for demonstration on mock website for EEP project
+#Modified SIS Cracker created for demonstration on Tyler SIS for EEP project
 
 #gets the libraries required for functions used in this program
 from selenium.common.exceptions import NoSuchElementException

