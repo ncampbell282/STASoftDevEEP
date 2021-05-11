@@ -2,6 +2,7 @@ html {
   height: 100%;
 }
 
+/* Website Background/Font Styles */
 body {
   height: 100%;
   margin: 0;
@@ -12,6 +13,7 @@ body {
   background-color: #f1eeec;
 }
 
+/* Login Background Box Styles */
 #main-holder {
   width: 25%;
   height: 30%;
@@ -30,10 +32,12 @@ body {
   align-items: center;
 }
 
+/* Default Text Shown in Text Box */
 .login-form-field::placeholder {
   color: #9b9999;
 }
 
+/* Text Box Styles */
 .login-form-field {
   border: 2px solid #e4e4e4;
   width: 200px;
@@ -44,6 +48,7 @@ body {
   padding: 0px 0px 5px 5px;
 }
 
+/* Login Button Styles */
 #login-form-submit {
   width: 100%;
   padding: 7px;
