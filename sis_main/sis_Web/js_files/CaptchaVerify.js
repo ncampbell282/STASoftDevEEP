@@ -1,19 +1,51 @@
 /* 
- * Nolan Campbell
- * This script will verify that mouse movement is detected, and allow the user to attempt to login to Tyler SIS
+ * MouseTracker
+ * Created by Christian Lampher 
+ * 05/04/2021
+ * 
+ * The mouse tracker tracks the movement of the user's mouse, making note of 
+ * the number of events (times the computer has detected the mouse movement)
+ * as well as the X and Y coordinates of the mouse on the web page. The also 
+ * returns either true or false under the "mouseDetect" function depending on 
+ * whether the mouse is unmoved (undefined or 0).
  */
 
 //Constants
 const loginForm = document.getElementById("login-form");
 
-//Global variables
+// Mouse Tracker 
+var xval; // X Value
+var yval; // X Value
+var mouseCounter = 0;
+var mousePrev = 0;
+
+window.addEventListener('mousemove', function(e) // Listener to fire when mouse movement detected
+    {
+        mouseCounter += 1; // Counts every time a mouse event fires
+        xval = e.x; // Sets the mouse X value
+        yval = e.y; // Sets the mouse Y value
+    });
+
+function mouseDetect() // Use this function to check if the mouse is moved, returns boolean 
+{
+    if (mouseCounter !== 0 && mouseCounter !== null && mouseCounter !== undefined) // If the mouse has moved from it's point at page start
+    {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+/* 
+ * Nolan Campbell
+ * Captcha Verify
+ * This portion of the code will verify that mouse movement is detected, and allow the user to attempt to login to Tyler SIS
+ */
+
+//Captcha Verify 
+
 //Counter for login attempts
 var loginAttempts = 0;
-
-//Get if mouse movement is detected or not
-function isVerified() {
-    return false;
-}
 
 //Get entered username
 function getUsername() {
@@ -34,7 +66,7 @@ function attemptLogin() {
     if (loginAttempts < 5) {
         sendValidation();
     } else if (loginAttempts >= 5) { //If attempts >= 5, then verify and lock user out if verification failed
-        if (isVerified() == true) {
+        if (mouseDetect() == true) {
             sendValidation();
         } else {
             lockout();
