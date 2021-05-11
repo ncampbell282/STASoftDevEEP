@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Login</title>
+    <link rel="stylesheet" href="login-page.css">
+    <script defer src="js_files/CaptchaVerify.js"></script>
+</head>
+
+<body>
+    <main id="main-holder">
+        <p id="is-login">Please Login</p>
+        <form id="login-form" onsubmit="return attemptLogin()">
+            <input type="text" name="username" id="txtUserName" class="login-form-field" placeholder="Username">
+            <input type="password" name="password" id="txtPassword" class="login-form-field" placeholder="Password">
+            <button type="submit" value="Login" id="login-form-submit">
+    </form>
+
+  </main>
+</body>
+
+</html>
