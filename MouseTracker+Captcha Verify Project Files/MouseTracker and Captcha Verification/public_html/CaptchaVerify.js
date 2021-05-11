@@ -11,7 +11,7 @@
   */
 
  //Constants
- const loginForm = document.getElementById("login-form");
+ const loginForm = document.getElementById("login-form"); //The form on the html login-page
 
  // Mouse Tracker 
  var xval; // X Value
@@ -49,26 +49,23 @@
 
  //Get entered username
  function getUsername() {
-     return username = loginForm.username.value;
-     //return document.getElementById("txtUserName").innerHTML;
+     return username = loginForm.username.value; //Returns respective form value
  }
 
  //get entered password
  function getPassword() {
-     return password = loginForm.password.value;
-     //return document.getElementById("txtPassword").innerHTML;
-
+     return password = loginForm.password.value; //Returns respective form value
  }
 
  //Attempt to login
  function attemptLogin() {
-     //If attempts is less than five, to not validate
+     //If attempts is less than five, do not validate and attempt to login
      if (loginAttempts < 5) {
-         sendValidation();
+         sendCredentials();
      } else if (loginAttempts >= 5) { //If attempts >= 5, then verify and lock user out if verification failed
-         if (mouseDetect() == true) {
-             sendValidation();
-         } else {
+         if (mouseDetect() == true) { //If verification passed, attempt login
+             sendCredentials();
+         } else { //Lock out user
              lockout();
          }
      }
@@ -78,7 +75,7 @@
      return false; //Return needed for form on login-page.html
  }
 
- function sendValidation() {
+ function sendCredentials() {
      //Get username and password
      var username = getUsername();
      var password = getPassword();
@@ -90,9 +87,8 @@
      xmlhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) { //Verify that a response has been properly received
              //Print response text to screen
-             //document.getElementById("is-login").innerHTML = this.responseText;
 
-             //If the login credentials were valid, tell the user
+             //If the login credentials were valid, and tell the user
              if (this.response == true) {
                  document.getElementById("is-login").innerHTML = "Login successful";
              } else { //Else tell teh user login failed
@@ -101,11 +97,13 @@
          }
      };
 
-     //xmlhttp.open("POST", "verifylogin.php?name=" + username + "&pass=" + password, true);
+     //Sending the request
+
+     //Open a new POST request to the PHP server verifylogin.php
      xmlhttp.open("POST", "http://localhost:3000/MouseTracker+Captcha%20Verify%20Project%20Files/MouseTracker%20and%20Captcha%20Verification/public_html/verifylogin.php", true);
 
-     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-     xmlhttp.send("name=" + username + "&pass=" + password);
+     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Set the header
+     xmlhttp.send("name=" + username + "&pass=" + password); //Send the request with username and password as parameters
  }
 
  //Function to lock user out
@@ -120,7 +118,6 @@
 
  //Function to allow user to submit login attempt once time is up
  function unHideButton() {
-     document.getElementById("login-form-submit").hidden = false;
-     document.getElementById("is-login").innerHTML = "You can now login";
-     console.log("One minute has passed");
+     document.getElementById("login-form-submit").hidden = false; //Unhide login box
+     document.getElementById("is-login").innerHTML = "You can now login"; //Tell user they can log in
  }
