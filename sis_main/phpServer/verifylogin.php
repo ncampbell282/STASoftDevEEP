@@ -21,7 +21,6 @@ if($mysqli->connect_error) {
 
 //Create query to run on the database
 $sql = "SELECT username, password FROM sisusrnameandpassword WHERE username = '".$name."' AND password = '".$pass."'";
-//$sql = "SELECT username, password FROM sisusrnameandpassword WHERE username = 'nolan.campbell461' AND password = 'best6713'";
 
 //Send query to database, and store result in $result
 $result = $mysqli->query($sql);
@@ -30,11 +29,9 @@ $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row in results
   while($row = $result->fetch_assoc()) {
-    echo true;
-    //Print query result
-    //echo "username: " . $row["username"]. " - Password: " . $row["password"]. " " . "<br>";
+    echo true; //Return true
   }
 } else {
-  echo false;
+  echo false; //Return false
 }
 ?>
