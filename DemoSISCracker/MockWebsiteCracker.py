@@ -23,7 +23,8 @@ numToUse = str(6700).zfill(4) #Starting point, very targeted towards correct pas
 #may need to replace the executable path with the correct destination on your computer
 browser = webdriver.Chrome(executable_path=r"chromedriver.exe")#sets the webdriver to open the browser
 
-browser.get('file:///C:/Users/ncampbell282/Documents/GitHub/STASoftDevEEP/sis_main/sis_Web/login-page.html') #opens tyler sis in google chrome
+#opens mock website in google chrome, path dependent on individual user
+browser.get('file:///C:/Users/crazy/Documents/GitHub/STASoftDevEEP/sis_main/sis_Web/login-page.html') 
 
 time.sleep(1.5) #this is a pause to ensure that the site loads fully
 
