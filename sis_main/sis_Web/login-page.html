@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8"> <!-- Define page's character encoding -->
+    <title>Mock Login</title> <!-- Title displayed on page tab -->
+    <link rel="stylesheet" href="login-page.css"> <!-- Imports style sheet -->
+    <script defer src="js_files/CaptchaVerify.js"></script> <!-- Imports the main .js file to verify login -->
+</head>
+
+<body>
+    <main id="main-holder">
+        <p id="is-login">Please Login</p> <!-- Displays login header -->
+        <!-- Form 'login-form' holds text boxes for Username and Password and the login button -->
+        <form id="login-form" onsubmit="return attemptLogin()">
+            <input type="text" name="username" id="txtUserName" class="login-form-field" placeholder="Username">
+            <input type="password" name="password" id="txtPassword" class="login-form-field" placeholder="Password">
+            <!-- Calls attemptLogin() method once button is pressed/information is entered -->
+            <button type="submit" value="Login" id="login-form-submit"> Login 
+        </form>
+    </main>
+</body>
+
+</html>
